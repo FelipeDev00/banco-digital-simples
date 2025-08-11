@@ -1,4 +1,4 @@
-# banco-digital simples
+# banco-digital-simples
 Este projeto será somente para exercitar conceitos de orientação a objetos e collections em Java, com uso especial de ArrayList e Scanner para entrada de dados via terminal. Sem uso de banco de dados e interfaces gráficas no momento.
 <br>
 <br>
