@@ -13,6 +13,9 @@ public abstract class Conta implements IConta{
         return saldo;
     }
 
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
     //Métodos
 
     @Override

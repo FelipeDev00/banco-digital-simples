@@ -9,7 +9,7 @@ public class Main {
 
         do {
             System.out.println("\n---------------------------\nBem vindo ao Banco Digital! \nO que você pretende fazer hoje? \n 1 - Cadastrar cliente \n 2 - Realizar saque " +
-                    "\n 3 - Realizar transferência \n 4 - Consultar extrato \n 5 - Mostrar clientes cadastrados \n 6 - Sair do sistema \n\n Digite a opção desejada aqui: ");
+                    "\n 3 - Realizar transferência \n 4 - Realizar depósito \n 5 - Consultar extrato \n 6 - Mostrar clientes cadastrados \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
             opcao = sc.nextInt();
 
             switch (opcao){
@@ -33,10 +33,13 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.println("Mostra o sistema de realizar depósito");
+
+                case 5:
                     System.out.println("Mostra o sistema de consultar extrato");
                     break;
 
-                case 5:
+                case 6:
 
                     for (Cliente cliente : listaClientes){
 
@@ -44,7 +47,7 @@ public class Main {
                     }
                     break;
 
-                case 6:
+                case 7:
                     System.out.println("Agradecemos por confiar em nosso sistema! \nVolte sempre!");
                     break;
 
