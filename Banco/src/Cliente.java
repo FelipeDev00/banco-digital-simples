@@ -21,8 +21,8 @@ public class Cliente {
     public String getDataNascimento() {
         return dataNascimento;
     }
-    //Setters
 
+    //Setters
     public void setNome(String nome) {
         this.nome = nome;
     }
