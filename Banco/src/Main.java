@@ -4,12 +4,13 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         int opcao;
+
         Scanner sc = new Scanner(System.in);
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        ArrayList<Conta> listaContas = new ArrayList<>();
 
         do {
-            System.out.println("\n---------------------------\nBem vindo ao Banco Digital! \nO que você pretende fazer hoje? \n 1 - Cadastrar cliente \n 2 - Realizar saque " +
-                    "\n 3 - Realizar transferência \n 4 - Realizar depósito \n 5 - Consultar extrato \n 6 - Mostrar clientes cadastrados \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
+            System.out.println("\n----- Bem vindo ao Banco Digital! -----\nO que você pretende fazer hoje? \n 1 - Cadastrar cliente \n 2 - Realizar saque " +
+                    "\n 3 - Realizar transferência \n 4 - Realizar depósito \n 5 - Consultar saldo \n 6 - Mostrar clientes cadastrados \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
             opcao = sc.nextInt();
 
             switch (opcao){
@@ -21,7 +22,10 @@ public class Main {
                     System.out.println("Insira a data de nascimento do cliente: ");
                     String dataNascimento = sc.next();
 
-                    listaClientes.add(new Cliente(nomeCliente, cpf, dataNascimento, Conta.SEQUENCIAL, Conta.AGENCIA_PADRAO));
+                    Cliente novoCliente = new Cliente(nomeCliente, cpf, dataNascimento);
+                    Conta novaConta = new ContaCorrente(novoCliente);
+
+                    listaContas.add(novaConta);
                     System.out.println("Cliente cadastrado com sucesso!");
                     break;
 
@@ -42,10 +46,6 @@ public class Main {
 
                 case 6:
 
-                    for (Cliente cliente : listaClientes){
-
-                        System.out.println("Cliente: " + cliente.getNome() + " | "+ cliente.getCpf() + " | "+  cliente.getDataNascimento() + "\n" + "Agência: " + cliente.getAgencia() + " | " + "Conta: " +  + cliente.getNumero() + "\n");
-                    }
                     break;
 
                 case 7:

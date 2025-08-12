@@ -3,27 +3,39 @@ public abstract class Conta implements IConta{
     protected static final String AGENCIA_PADRAO = "0001";
     protected static int SEQUENCIAL = 0001;
 
-    private String agencia;
-    private int numero;
-    private double saldoCorrente;
-    private double saldoPoupanca;
+    protected Cliente titular;
+    protected String agencia;
+    protected int numeroConta;
+    protected double saldoCorrente = 0;
+    protected double saldoPoupanca = 0;
 
-    public Conta() {
-        this.agencia = Conta.AGENCIA_PADRAO;
-        this.numero = Conta.SEQUENCIAL++;
+    public Conta(Cliente titular) {
+        this.titular = titular;
+        this.agencia = AGENCIA_PADRAO;
+        this.numeroConta = SEQUENCIAL++;
+        this.saldoCorrente = saldoCorrente;
+        this.saldoPoupanca = saldoPoupanca;
     }
 
     //Getters
-    public int getNumeroConta() {
-        return numero;
-    }
-
-    public double getSaldo() {
+    public double getSaldoCorrente() {
         return saldoCorrente;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public double getSaldoPoupanca() {
+        return saldoPoupanca;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public Cliente getTitular() {
+        return titular;
     }
 
     //Setters
@@ -36,8 +48,9 @@ public abstract class Conta implements IConta{
     }
 
     public void setNumeroConta(int numero) {
-        this.numero = numero;
+        this.numeroConta = numero;
     }
+
 
     //Métodos
     @Override
@@ -54,6 +67,11 @@ public abstract class Conta implements IConta{
     public void transferir(double valor, Conta contaDestino) {
         sacar(valor);
         contaDestino.depositar(valor);
-
+    }
+    public void mostrarInfos() {
+        System.out.println("Titular: " + titular.getNome());
+        System.out.println("Agência: " + agencia);
+        System.out.println("Conta: " + numeroConta);
+        System.out.println("Saldo: " + saldoCorrente);
     }
 }
