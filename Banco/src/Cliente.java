@@ -1,13 +1,17 @@
-public class Cliente {
+public class Cliente extends Conta{
 
     private String nome;
     private String cpf;
     private String dataNascimento;
+    private int conta;
+    private int agencia;
 
-    public Cliente(String nome, String cpf, String dataNascimento) {
+    public Cliente(String nome, String cpf, String dataNascimento, int conta, int agencia) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+        this.conta = Conta.SEQUENCIAL;
+        this.agencia = Conta.AGENCIA_PADRAO;
     }
     //Getters
     public String getNome() {
@@ -20,6 +24,10 @@ public class Cliente {
 
     public String getDataNascimento() {
         return dataNascimento;
+    }
+
+    public int getAgencia() {
+        return agencia;
     }
 
     //Setters

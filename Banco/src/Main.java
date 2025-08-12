@@ -20,7 +20,8 @@ public class Main {
                     String cpf = sc.next();
                     System.out.println("Insira a data de nascimento do cliente: ");
                     String dataNascimento = sc.next();
-                    listaClientes.add(new Cliente(nomeCliente, cpf, dataNascimento));
+
+                    listaClientes.add(new Cliente(nomeCliente, cpf, dataNascimento, Conta.SEQUENCIAL, Conta.AGENCIA_PADRAO));
                     System.out.println("Cliente cadastrado com sucesso!");
                     break;
 
@@ -43,7 +44,7 @@ public class Main {
 
                     for (Cliente cliente : listaClientes){
 
-                        System.out.println("Cliente: " + cliente.getNome() + " / "+ cliente.getCpf() + " / "+  cliente.getDataNascimento());
+                        System.out.println("Cliente: " + cliente.getNome() + " | "+ cliente.getCpf() + " | "+  cliente.getDataNascimento() + "\n" + "Agência: " + cliente.getAgencia() + " | " + "Conta: " +  + cliente.getNumero() + "\n");
                     }
                     break;
 
