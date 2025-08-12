@@ -4,9 +4,9 @@ public class Cliente extends Conta{
     private String cpf;
     private String dataNascimento;
     private int conta;
-    private int agencia;
+    private String agencia;
 
-    public Cliente(String nome, String cpf, String dataNascimento, int conta, int agencia) {
+    public Cliente(String nome, String cpf, String dataNascimento, int conta, String agencia) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -26,7 +26,7 @@ public class Cliente extends Conta{
         return dataNascimento;
     }
 
-    public int getAgencia() {
+    public String getAgencia() {
         return agencia;
     }
 

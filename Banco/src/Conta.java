@@ -1,9 +1,9 @@
 public abstract class Conta implements IConta{
 
-    protected static final int AGENCIA_PADRAO = 0001;
+    protected static final String AGENCIA_PADRAO = "0001";
     protected static int SEQUENCIAL = 0001;
 
-    private int agencia;
+    private String agencia;
     private int numero;
     private double saldoCorrente;
     private double saldoPoupanca;
