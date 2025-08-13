@@ -9,8 +9,8 @@ public class Main {
         ArrayList<Conta> listaContas = new ArrayList<>();
 
         do {
-            System.out.println("\n----- Bem vindo ao Banco Digital! -----\nO que você pretende fazer hoje? \n 1 - Cadastrar nova conta \n 2 - Realizar saque " +
-                    "\n 3 - Realizar transferência \n 4 - Realizar depósito \n 5 - Consultar saldo \n 6 - Mostrar contas cadastradas \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
+            System.out.println("\n----- Bem vindo ao Banco Digital! -----\nO que você pretende fazer hoje? \n 1 - Cadastrar nova conta \n 2 - Realizar depósito " +
+                    "\n 3 - Realizar saque \n 4 - Realizar transferência \n 5 - Consultar saldo \n 6 - Mostrar contas cadastradas \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
             opcao = sc.nextInt();
 
             switch (opcao){
@@ -26,18 +26,10 @@ public class Main {
                     Conta novaConta = new ContaCorrente(novoCliente);
 
                     listaContas.add(novaConta);
-                    System.out.println("Cliente cadastrado com sucesso!");
+                    System.out.println("Conta cadastrada com sucesso!");
                     break;
 
                 case 2:
-                    System.out.println("Mostra o sistema de realizar saque");
-                    break;
-
-                case 3:
-                    System.out.println("Mostra o sistema de realizar transferência");
-                    break;
-
-                case 4:
                     System.out.println("Digite o número da conta para depósito: ");
                     int contaDeposito = sc.nextInt();
 
@@ -45,7 +37,7 @@ public class Main {
                         if(c.getNumeroConta() != contaDeposito) {
                             System.out.println("Não é possível realizar o depósito, pois o número da conta destino está incorreto ou não existe.");
                         } else {
-                            System.out.println("Digite o valor que quer depositar: ");
+                            System.out.println("Digite o valor que deseja depositar: ");
                             double valorDeposito = sc.nextDouble();
 
                             for (Conta c1 : listaContas){
@@ -57,6 +49,33 @@ public class Main {
                         }
                     }
                     break;
+
+                case 3:
+                    System.out.println("Digite o número da conta para sacar: ");
+                    int contaSaque = sc.nextInt();
+
+                    for (Conta c : listaContas){
+                        if(c.getNumeroConta() != contaSaque) {
+                            System.out.println("Não é possível realizar o saque, pois o número da conta está incorreto ou não existe.");
+                        } else {
+                            System.out.println("Digite o valor que deseja sacar: ");
+                            double valorSaque = sc.nextDouble();
+
+                            for (Conta c1 : listaContas){
+                                if(c.getNumeroConta() == contaSaque){
+                                    if(c.getSaldoCorrente() >= valorSaque){
+                                        c.sacar(valorSaque);
+                                        System.out.println("Saque realizado com sucesso!");
+                                    } else {
+                                        System.out.println("Não é possível realizar o saque, pois não há saldo suficiente na conta.");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+                case 4:
 
                 case 5:
                     System.out.println("Mostra o sistema de consultar extrato");
