@@ -10,7 +10,7 @@ public class Main {
 
         do {
             System.out.println("\n----- Bem vindo ao Banco Digital! -----\nO que você pretende fazer hoje? \n 1 - Cadastrar nova conta \n 2 - Realizar depósito " +
-                    "\n 3 - Realizar saque \n 4 - Realizar transferência \n 5 - Consultar saldo \n 6 - Mostrar contas cadastradas \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
+                    "\n 3 - Realizar saque \n 4 - Realizar transferência \n 5 - Consultar informações da conta \n 6 - Sair do sistema \n\n Digite a opção desejada aqui: ");
             opcao = sc.nextInt();
 
             switch (opcao){
@@ -78,17 +78,17 @@ public class Main {
                 case 4:
 
                 case 5:
-                    System.out.println("Mostra o sistema de consultar extrato");
-                    break;
+                    System.out.println("Digite o número da conta que quer consultar informações: ");
+                    int contaSaldo = sc.nextInt();
 
-                case 6:
                     for (Conta c : listaContas){
-                        c.mostrarInfos();
-                        System.out.println("--------------------");
+                        if(contaSaldo == c.numeroConta){
+                            c.mostrarInfos();
+                        }
                     }
                     break;
 
-                case 7:
+                case 6:
                     System.out.println("Agradecemos por confiar em nosso sistema! \nVolte sempre!");
                     break;
 
