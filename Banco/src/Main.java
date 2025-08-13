@@ -9,8 +9,8 @@ public class Main {
         ArrayList<Conta> listaContas = new ArrayList<>();
 
         do {
-            System.out.println("\n----- Bem vindo ao Banco Digital! -----\nO que você pretende fazer hoje? \n 1 - Cadastrar cliente \n 2 - Realizar saque " +
-                    "\n 3 - Realizar transferência \n 4 - Realizar depósito \n 5 - Consultar saldo \n 6 - Mostrar clientes cadastrados \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
+            System.out.println("\n----- Bem vindo ao Banco Digital! -----\nO que você pretende fazer hoje? \n 1 - Cadastrar nova conta \n 2 - Realizar saque " +
+                    "\n 3 - Realizar transferência \n 4 - Realizar depósito \n 5 - Consultar saldo \n 6 - Mostrar contas cadastradas \n 7 - Sair do sistema \n\n Digite a opção desejada aqui: ");
             opcao = sc.nextInt();
 
             switch (opcao){
@@ -38,14 +38,35 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Mostra o sistema de realizar depósito");
+                    System.out.println("Digite o número da conta para depósito: ");
+                    int contaDeposito = sc.nextInt();
+
+                    for (Conta c : listaContas){
+                        if(c.getNumeroConta() != contaDeposito) {
+                            System.out.println("Não é possível realizar o depósito, pois o número da conta destino está incorreto ou não existe.");
+                        } else {
+                            System.out.println("Digite o valor que quer depositar: ");
+                            double valorDeposito = sc.nextDouble();
+
+                            for (Conta c1 : listaContas){
+                                if(c.getNumeroConta() == contaDeposito){
+                                    c.depositar(valorDeposito);
+                                    System.out.println("Depósito realizado com sucesso!");
+                                }
+                            }
+                        }
+                    }
+                    break;
 
                 case 5:
                     System.out.println("Mostra o sistema de consultar extrato");
                     break;
 
                 case 6:
-
+                    for (Conta c : listaContas){
+                        c.mostrarInfos();
+                        System.out.println("--------------------");
+                    }
                     break;
 
                 case 7:

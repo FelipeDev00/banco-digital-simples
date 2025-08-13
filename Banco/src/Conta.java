@@ -47,10 +47,6 @@ public abstract class Conta implements IConta{
         this.saldoPoupanca = saldoPoupanca;
     }
 
-    public void setNumeroConta(int numero) {
-        this.numeroConta = numero;
-    }
-
 
     //Métodos
     @Override
