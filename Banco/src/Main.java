@@ -76,7 +76,15 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.println("Digite o número da sua conta: ");
+                    int numeroConta = sc.nextInt();
+                    System.out.println("Digite o número da conta que deseja realizar a tansferência: ");
+                    int contaTransferencia = sc.nextInt();
+                    System.out.println("Digite o valor que deseja transferir: ");
+                    double valorTransferencia = sc.nextDouble();
 
+
+                    break;
                 case 5:
                     System.out.println("Digite o número da conta que quer consultar informações: ");
                     int contaSaldo = sc.nextInt();
@@ -95,7 +103,7 @@ public class Main {
                 default:
                     System.out.println("Opção inválida.");
             }
-        } while (opcao !=5);
+        } while (opcao !=6);
         sc.close();
     }
 }
