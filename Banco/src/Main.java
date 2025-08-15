@@ -77,14 +77,45 @@ public class Main {
 
                 case 4:
                     System.out.println("Digite o número da sua conta: ");
-                    int numeroConta = sc.nextInt();
+                    int numeroContaOrigem = sc.nextInt();
+
                     System.out.println("Digite o número da conta que deseja realizar a tansferência: ");
-                    int contaTransferencia = sc.nextInt();
-                    System.out.println("Digite o valor que deseja transferir: ");
-                    double valorTransferencia = sc.nextDouble();
+                    int numeroContaDestino = sc.nextInt();
 
+                    Conta contaOrigem = null;
+                    Conta contaDestino = null;
 
+                    //Leitura e armazenamento das contas nas variáveis do tipo Conta.
+                    for (Conta c : listaContas) {
+                        if (c.getNumeroConta() == numeroContaOrigem) {
+                            contaOrigem = c;
+                        }
+                        if (c.getNumeroConta() == numeroContaDestino) {
+                            contaDestino = c;
+                        }
+                    }
+                    //Validação das contas (verifica se as contas existem no sistema)
+                    if (contaOrigem == null) {
+                        System.out.println("Conta de origem não encontrada!");
+                    }
+                    else if (contaDestino == null) {
+                        System.out.println("Conta de destino não encontrada!");
+                    }
+                    else {
+                        System.out.println("Digite o valor que deseja transferir: ");
+                        double valorTransferencia = sc.nextDouble();
+
+                        //validação do valor da transferência (Verifica se o valor da transferência é menor que o saldo disponível na conta)
+                        if(contaOrigem.getSaldoCorrente() < valorTransferencia){
+                            System.out.println("Saldo insuficiente para realizar a transferência!");
+                        }
+                        else{
+                            contaOrigem.transferir(valorTransferencia, contaDestino);
+                            System.out.println("Tranferência realizada com sucesso!");
+                        }
+                    }
                     break;
+
                 case 5:
                     System.out.println("Digite o número da conta que quer consultar informações: ");
                     int contaSaldo = sc.nextInt();
