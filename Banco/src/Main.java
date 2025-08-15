@@ -33,18 +33,21 @@ public class Main {
                     System.out.println("Digite o número da conta para depósito: ");
                     int contaDeposito = sc.nextInt();
 
+                    //Realiza a leitura das contas e verifica se o número da conta digitada pelo usuário está correto.
                     for (Conta c : listaContas){
                         if(c.getNumeroConta() != contaDeposito) {
-                            System.out.println("Não é possível realizar o depósito, pois o número da conta destino está incorreto ou não existe.");
-                        } else {
+                            System.out.println("Não é possível realizar o depósito, pois o número da conta está incorreto ou não existe.");
+                        }
+                        else {
                             System.out.println("Digite o valor que deseja depositar: ");
                             double valorDeposito = sc.nextDouble();
 
-                            for (Conta c1 : listaContas){
-                                if(c.getNumeroConta() == contaDeposito){
-                                    c.depositar(valorDeposito);
-                                    System.out.println("Depósito realizado com sucesso!");
-                                }
+                            //Verifica se o usuário digitou um número válido.
+                            if(valorDeposito <= 0){
+                                System.out.println("Por favor, digite um número válido.");
+                            } else {
+                                c.depositar(valorDeposito);
+                                System.out.println("Depósito realizado com sucesso!");
                             }
                         }
                     }
@@ -54,22 +57,21 @@ public class Main {
                     System.out.println("Digite o número da conta para sacar: ");
                     int contaSaque = sc.nextInt();
 
+                    //Realiza a leitura das contas e verifica se o número da conta digitada pelo usuário está correto.
                     for (Conta c : listaContas){
                         if(c.getNumeroConta() != contaSaque) {
                             System.out.println("Não é possível realizar o saque, pois o número da conta está incorreto ou não existe.");
-                        } else {
+                        }
+                        else {
                             System.out.println("Digite o valor que deseja sacar: ");
                             double valorSaque = sc.nextDouble();
 
-                            for (Conta c1 : listaContas){
-                                if(c.getNumeroConta() == contaSaque){
-                                    if(c.getSaldoCorrente() >= valorSaque){
-                                        c.sacar(valorSaque);
-                                        System.out.println("Saque realizado com sucesso!");
-                                    } else {
-                                        System.out.println("Não é possível realizar o saque, pois não há saldo suficiente na conta.");
-                                    }
-                                }
+                            //Verifica se o saldo da conta é maior que o valor do saque.
+                            if(c.getSaldoCorrente() < valorSaque){
+                                System.out.println("Não é possível realizar o saque, pois não há saldo suficiente na conta.");
+                            } else {
+                                c.sacar(valorSaque);
+                                System.out.println("Saque realizado com sucesso!");
                             }
                         }
                     }
@@ -94,21 +96,25 @@ public class Main {
                             contaDestino = c;
                         }
                     }
-                    //Validação das contas (verifica se as contas existem no sistema)
+                    //Validação das contas: verifica se as contas existem no sistema.
                     if (contaOrigem == null) {
                         System.out.println("Conta de origem não encontrada!");
                     }
                     else if (contaDestino == null) {
                         System.out.println("Conta de destino não encontrada!");
                     }
+
+                    //Caso exista, pede o valor que o usuário deseja transferir.
                     else {
                         System.out.println("Digite o valor que deseja transferir: ");
                         double valorTransferencia = sc.nextDouble();
 
-                        //validação do valor da transferência (Verifica se o valor da transferência é menor que o saldo disponível na conta)
+                        //validação do valor da transferência: Verifica se o valor da transferência é menor que o saldo disponível na conta.
                         if(contaOrigem.getSaldoCorrente() < valorTransferencia){
                             System.out.println("Saldo insuficiente para realizar a transferência!");
                         }
+
+                        //Após todas as validações serem bem sucedidas, o sistema realiza a transferencia.
                         else{
                             contaOrigem.transferir(valorTransferencia, contaDestino);
                             System.out.println("Tranferência realizada com sucesso!");
@@ -118,17 +124,20 @@ public class Main {
 
                 case 5:
                     System.out.println("Digite o número da conta que quer consultar informações: ");
-                    int contaSaldo = sc.nextInt();
+                    int contaNumero = sc.nextInt();
 
+                    //Realiza a leitura e mostra as informações da conta digitada pelo usuário.
                     for (Conta c : listaContas){
-                        if(contaSaldo == c.numeroConta){
+                        if(contaNumero == c.numeroConta){
                             c.mostrarInfos();
+                        } else{
+                            System.out.println("Conta não encontrada!");
                         }
                     }
                     break;
 
                 case 6:
-                    System.out.println("Agradecemos por confiar em nosso sistema! \nVolte sempre!");
+                    System.out.println("Agradecemos por utilizar nosso sistema! \nVolte sempre!");
                     break;
 
                 default:
